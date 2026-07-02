@@ -4,23 +4,20 @@ trigger:
 pool:
   name: KarateDL
 
-strategy:
-  matrix:
-    Dev:
-      karateEnv: 'dev'
-
 steps:
   - task: Gradle@3
     inputs:
       gradleWrapperFile: 'gradlew'
       tasks: 'test'
-      options: "-Dkarate.env=$(karateEnv)"
       publishJUnitResults: true
       testResultsFiles: '**/build/test-results/test/*.xml'
-    displayName: 'Run Karate Tests ($(karateEnv))'
+    displayName: 'Run Karate Tests'
 
   - task: PublishBuildArtifacts@1
     inputs:
       PathtoPublish: 'build/reports/tests/test'
-      ArtifactName: 'KarateReports-$(karateEnv)'
+      ArtifactName: 'Karate Test Results'
       publishLocation: 'Container'
+
+  - script: echo "Karate tests executed successfully"
+    displayName: 'Log Test Execution'
