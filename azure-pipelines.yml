@@ -1,0 +1,30 @@
+trigger:
+  - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+strategy:
+  matrix:
+    Dev:
+      karateEnv: 'dev'
+    Staging:
+      karateEnv: 'staging'
+    Prod:
+      karateEnv: 'prod'
+
+steps:
+  - task: Gradle@3
+    inputs:
+      gradleWrapperFile: 'gradlew'
+      tasks: 'test'
+      options: "-Dkarate.env=$(karateEnv)"
+      publishJUnitResults: true
+      testResultsFiles: '**/build/test-results/test/*.xml'
+    displayName: 'Run Karate Tests ($(karateEnv))'
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: 'build/reports/tests/test'
+      ArtifactName: 'KarateReports-$(karateEnv)'
+      publishLocation: 'Container'
