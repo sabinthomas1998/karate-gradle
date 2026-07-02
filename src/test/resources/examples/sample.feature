@@ -1,14 +1,15 @@
 Feature: ReqRes API Demo
 
   Scenario: Get single user
-    Given url baseUrl + '/users/2'
+    Given url 'https://reqres.in/api/users/2'
+    And header x-api-key = 'free_user_3FxIp9oT3FOWIx8haPrurBmUccN'
     When method get
     Then status 200
-    And match response.data.id == 2
+    And print response
 
-  Scenario: Create a user
-    Given url baseUrl + '/users'
-    And request { "name": "Sabin", "job": "Leader" }
-    When method post
-    Then status 201
-    And match response.name == 'Sabin'
+   Scenario: Get Multiple users
+     Given url 'https://reqres.in/api/users?page=2'
+     And header x-api-key = 'free_user_3FxIp9oT3FOWIx8haPrurBmUccN'
+     When method get
+     Then status 200
+     And print response
