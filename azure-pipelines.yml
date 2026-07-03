@@ -16,7 +16,7 @@ steps:
 
   - task: PublishBuildArtifacts@1
     inputs:
-      PathtoPublish: 'build/reports/tests/test'
+      PathtoPublish: 'build/karate-reports'
       ArtifactName: 'Karate Test Results'
       publishLocation: 'Container'
 
