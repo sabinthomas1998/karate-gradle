@@ -16,7 +16,7 @@ jobs:
         displayName: 'Run Stage 1 Tests'
       - task: PublishPipelineArtifact@1
         inputs:
-          targetPath: 'build/karate-reports'
+          targetPath: 'build/karate-reports/karate-reports/'
           artifact: 'Karate Test Results Stage 1'
 
   - job: Stage2
@@ -29,7 +29,7 @@ jobs:
         displayName: 'Run Stage 2 Tests'
       - task: PublishPipelineArtifact@1
         inputs:
-          targetPath: 'build/karate-reports'
+          targetPath: 'build/karate-reports/karate-reports/'
           artifact: 'Karate Test Results Stage 2'
 
   - job: Stage3
@@ -42,5 +42,5 @@ jobs:
         displayName: 'Run Stage 3 Tests'
       - task: PublishPipelineArtifact@1
         inputs:
-          targetPath: 'build/karate-reports'
+          targetPath: 'build/karate-reports/karate-reports/'
           artifact: 'Karate Test Results Stage 3'
