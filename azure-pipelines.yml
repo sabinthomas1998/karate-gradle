@@ -4,21 +4,43 @@ trigger:
 pool:
   name: KarateDL
 
-steps:
-  - task: Gradle@4
-    inputs:
-      gradleWrapperFile: 'gradlew'
-      tasks: 'test'
-      publishJUnitResults: true
-      testResultsFiles: '**/build/test-results/test/*.xml'
-    displayName: 'Run Karate Tests'
 
+jobs:
+  - job: Stage1
+    displayName: 'Run Karate Tests for Stage 1'
+    steps:
+      - task: Gradle@4
+        inputs:
+          gradleWrapperFile: 'gradlew'
+          tasks: 'test -Dkarate.options="--tags @stage1"'
+        displayName: 'Run Stage 1 Tests'
+      - task: PublishPipelineArtifact@1
+        inputs:
+          targetPath: 'build/karate-reports'
+          artifact: 'Karate Test Results Stage 1'
 
-  - task: PublishBuildArtifacts@1
-    inputs:
-      PathtoPublish: 'build/karate-reports/karate-reports/'
-      ArtifactName: 'Karate Test Results'
-      publishLocation: 'Container'
+  - job: Stage2
+    displayName: 'Run Karate Tests for Stage 2'
+    steps:
+      - task: Gradle@4
+        inputs:
+          gradleWrapperFile: 'gradlew'
+          tasks: 'test -Dkarate.options="--tags @stage2"'
+        displayName: 'Run Stage 2 Tests'
+      - task: PublishPipelineArtifact@1
+        inputs:
+          targetPath: 'build/karate-reports'
+          artifact: 'Karate Test Results Stage 2'
 
-  - script: echo "Karate tests executed successfully"
-    displayName: 'Log Test Execution'
+  - job: Stage3
+    displayName: 'Run Karate Tests for Stage 3'
+    steps:
+      - task: Gradle@4
+        inputs:
+          gradleWrapperFile: 'gradlew'
+          tasks: 'test -Dkarate.options="--tags @stage3"'
+        displayName: 'Run Stage 3 Tests'
+      - task: PublishPipelineArtifact@1
+        inputs:
+          targetPath: 'build/karate-reports'
+          artifact: 'Karate Test Results Stage 3'
