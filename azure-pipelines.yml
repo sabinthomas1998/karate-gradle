@@ -5,13 +5,14 @@ pool:
   name: KarateDL
 
 steps:
-  - task: Gradle@3
+  - task: Gradle@4
     inputs:
       gradleWrapperFile: 'gradlew'
       tasks: 'test'
       publishJUnitResults: true
       testResultsFiles: '**/build/test-results/test/*.xml'
     displayName: 'Run Karate Tests'
+
 
   - task: PublishBuildArtifacts@1
     inputs:
