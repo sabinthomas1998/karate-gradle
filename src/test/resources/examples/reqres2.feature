@@ -1,4 +1,4 @@
-@stage1
+@stage2
 Feature: ReqRes API Demo
 
   Scenario: Get single user 2

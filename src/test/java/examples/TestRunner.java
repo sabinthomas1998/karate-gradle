@@ -10,15 +10,21 @@ class TestRunner {
         return Karate.run().relativeTo(getClass());
     }
 
-    // Run feature files in the "stage1" directory
+    // Run all features tagged with @stage1
     @Karate.Test
     Karate testStage1() {
-        return Karate.run("stage1").relativeTo(getClass());
+        return Karate.run().tags("@stage1").relativeTo(getClass());
     }
 
-    // Run a specific feature file
+    // Run all features tagged with @stage2
     @Karate.Test
-    Karate testSpecificFeature() {
-        return Karate.run("stage1/a.feature").relativeTo(getClass());
+    Karate testStage2() {
+        return Karate.run().tags("@stage2").relativeTo(getClass());
+    }
+
+    // Run all features tagged with @stage3
+    @Karate.Test
+    Karate testStage3() {
+        return Karate.run().tags("@stage3").relativeTo(getClass());
     }
 }
