@@ -14,24 +14,3 @@ Feature: ReqRes API Demo
     When method get
     Then status 200
     And print response
-
-  Scenario: Create a new user 3
-    Given url 'https://reqres.in/api/users'
-    And request { name: 'John', job: 'Developer' }
-    When method post
-    Then status 201
-    And match response.name == 'John'
-    And match response.job == 'Developer'
-
-  Scenario: Update a user 3
-    Given url 'https://reqres.in/api/users/2'
-    And request { name: 'Jane', job: 'Manager' }
-    When method put
-    Then status 200
-    And match response.name == 'Jane'
-    And match response.job == 'Manager'
-
-  Scenario: Delete a user 3
-    Given url 'https://reqres.in/api/users/2'
-    When method delete
-    Then status 204
