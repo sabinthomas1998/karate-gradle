@@ -46,3 +46,101 @@ jobs:
         inputs:
           targetPath: 'build/karate-reports/karate-reports'
           artifact: 'Karate Test Results Stage 3'
+
+  - job: Stage4
+    displayName: 'Run Karate Tests for Stage 4'
+    steps:
+      - task: Gradle@4
+        inputs:
+          gradleWrapperFile: 'gradlew'
+          tasks: 'test'
+          options: '-Dkarate.options="--tags @stage2"'
+        displayName: 'Run Stage 4 Tests'
+      - task: PublishPipelineArtifact@1
+        inputs:
+          targetPath: 'build/karate-reports/karate-reports'
+          artifact: 'Karate Test Results Stage 4'
+
+  - job: Stage5
+    displayName: 'Run Karate Tests for Stage 5'
+    steps:
+      - task: Gradle@4
+        inputs:
+          gradleWrapperFile: 'gradlew'
+          tasks: 'test'
+          options: '-Dkarate.options="--tags @stage1"'
+        displayName: 'Run Stage 5 Tests'
+      - task: PublishPipelineArtifact@1
+        inputs:
+          targetPath: 'build/karate-reports/karate-reports'
+          artifact: 'Karate Test Results Stage 5'
+
+  - job: Stage6
+    displayName: 'Run Karate Tests for Stage 6'
+    steps:
+      - task: Gradle@4
+        inputs:
+          gradleWrapperFile: 'gradlew'
+          tasks: 'test'
+          options: '-Dkarate.options="--tags @stage3"'
+        displayName: 'Run Stage 6 Tests'
+      - task: PublishPipelineArtifact@1
+        inputs:
+          targetPath: 'build/karate-reports/karate-reports'
+          artifact: 'Karate Test Results Stage 6'
+
+  - job: Stage7
+    displayName: 'Run Karate Tests for Stage 7'
+    steps:
+      - task: Gradle@4
+        inputs:
+          gradleWrapperFile: 'gradlew'
+          tasks: 'test'
+          options: '-Dkarate.options="--tags @stage1"'
+        displayName: 'Run Stage 7 Tests'
+      - task: PublishPipelineArtifact@1
+        inputs:
+          targetPath: 'build/karate-reports/karate-reports'
+          artifact: 'Karate Test Results Stage 7'
+
+  - job: Stage8
+    displayName: 'Run Karate Tests for Stage 8'
+    steps:
+      - task: Gradle@4
+        inputs:
+          gradleWrapperFile: 'gradlew'
+          tasks: 'test'
+          options: '-Dkarate.options="--tags @stage2"'
+        displayName: 'Run Stage 8 Tests'
+      - task: PublishPipelineArtifact@1
+        inputs:
+          targetPath: 'build/karate-reports/karate-reports'
+          artifact: 'Karate Test Results Stage 8'                    
+
+  - job: Stage9
+    displayName: 'Run Karate Tests for Stage 9'
+    steps:
+      - task: Gradle@4
+        inputs:
+          gradleWrapperFile: 'gradlew'
+          tasks: 'test'
+          options: '-Dkarate.options="--tags @stage1"'
+        displayName: 'Run Stage 9 Tests'
+      - task: PublishPipelineArtifact@1
+        inputs:
+          targetPath: 'build/karate-reports/karate-reports'
+          artifact: 'Karate Test Results Stage 9'                    
+
+  - job: Stage10
+    displayName: 'Run Karate Tests for Stage 10'
+    steps:
+      - task: Gradle@4
+        inputs:
+          gradleWrapperFile: 'gradlew'
+          tasks: 'test'
+          options: '-Dkarate.options="--tags @stage3"'
+        displayName: 'Run Stage 8 Tests'
+      - task: PublishPipelineArtifact@1
+        inputs:
+          targetPath: 'build/karate-reports/karate-reports'
+          artifact: 'Karate Test Results Stage 10'                    
